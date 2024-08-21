@@ -3,11 +3,11 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      container: {
-        width: "1140px",
+      maxWidth: {
+        conWidth: "1140px",
       },
       fontFamily: {
-        nunito: ["Nunito", "sans-serif"],
+        rubik: ["Rubik", "sans-serif"],
       },
       colors: {
         primary: "#F53855",

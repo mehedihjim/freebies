@@ -13,11 +13,11 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 pt-[50px] backdrop-blur-lg">
-      <div className="container  px-4 mx-auto relative text-sm">
+    <nav className="sticky top-0 z-50 pt-[50px] pb-5 backdrop-blur-lg">
+      <div className="max-w-conWidth px-4 mx-auto relative text-sm">
         <div className="flex justify-between items-center">
           <div id="logo-img" className="flex items-center flex-shrink-0">
-            <img className="" src={logo} alt="logo" />
+            <a href="#"><img className="" src={logo} alt="logo" /></a>
           </div>
           <ul id="menu-links" className="hidden text-other lg:flex ml-14 space-x-10">
             {navItems.map((item, index) => (
