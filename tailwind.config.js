@@ -14,6 +14,9 @@ export default {
         secondary: "#0B132A",
         other: "#4F5665",
       },
+      boxShadow: {
+        '3xl': '0px 38px 42px -3px rgba(0,0,0,0.1)',
+      }
     },
   },
   plugins: [],
