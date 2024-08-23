@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import logo from "../assets/Logo.png";
 import { navItems } from "./../constants";
 import { IoMdMenu } from "react-icons/io";
@@ -7,22 +7,50 @@ import CommonBtn from "./CommonBtn";
 
 const Navbar = () => {
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
 
   const toggleNavbar = () => {
     setMobileDrawerOpen(!mobileDrawerOpen);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setHasScrolled(true);
+      } else {
+        setHasScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className="sticky top-0 z-50 pt-[50px] pb-5 backdrop-blur-lg">
+    <nav
+      className={`sticky top-0 z-50 pt-[50px] pb-5 bg-white ${hasScrolled ? "shadow-md" : ""
+        } transition-shadow duration-300`}
+    >
       <div className="max-w-conWidth px-4 mx-auto relative text-sm">
         <div className="flex justify-between items-center">
           <div id="logo-img" className="flex items-center flex-shrink-0">
-            <a href="#"><img className="" src={logo} alt="logo" /></a>
+            <a href="#">
+              <img className="" src={logo} alt="logo" />
+            </a>
           </div>
-          <ul id="menu-links" className="hidden text-other lg:flex ml-14 space-x-10">
+          <ul
+            id="menu-links"
+            className="hidden text-other lg:flex ml-14 space-x-10"
+          >
             {navItems.map((item, index) => (
               <li key={index}>
-                <a href={item.href} className="hover:text-primary duration-150 ">
+                <a
+                  href={item.href}
+                  className="hover:text-primary duration-150 "
+                >
                   {item.label}
                 </a>
               </li>
@@ -40,25 +68,33 @@ const Navbar = () => {
             </a>
             <CommonBtn text="Sign Up" />
           </div>
-          <div id="mobile-menu" className="lg:hidden md:flex flex-col justify-end">
-            <button onClick={toggleNavbar}>
+          <div
+            id="mobile-menu"
+            className="lg:hidden md:flex flex-col justify-end"
+          >
+            <button onClick={toggleNavbar} className="text-lg">
               {mobileDrawerOpen ? <ImCancelCircle /> : <IoMdMenu />}
             </button>
           </div>
         </div>
         {mobileDrawerOpen && (
-          <div className="fixed right-0 z-20 bg-neutral-900 w-full p-12 flex flex-col justify-center items-center lg:hidden">
+          <div className="fixed right-0 z-20 bg-white backdrop-blur-lg w-full p-12 flex flex-col justify-center items-center lg:hidden">
             <ul className="mb-6">
               {navItems.map((item, index) => (
                 <li key={index} className="py-2">
-                  <a href={item.href}>{item.label}</a>
+                  <a
+                    href={item.href}
+                    className="hover:text-primary duration-150 "
+                  >
+                    {item.label}
+                  </a>
                 </li>
               ))}
             </ul>
             <div className="flex space-x-6">
               <a
                 href="#"
-                className="text-secondary font-medium hover:text-primary hover:opacity-45 duration-150"
+                className="text-secondary font-medium my-auto hover:text-primary hover:opacity-45 duration-150"
               >
                 Sign In
               </a>

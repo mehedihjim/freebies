@@ -15,7 +15,8 @@ export default {
         other: "#4F5665",
       },
       boxShadow: {
-        '3xl': '0px 38px 42px -3px rgba(0,0,0,0.1)',
+        '4xl': '0px 38px 42px -3px rgba(0,0,0,0.1)',
+        '3xl': '0px 20px 30px -16px rgba(0,0,0,0.1)',
       }
     },
   },

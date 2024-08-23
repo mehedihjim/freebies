@@ -1,7 +1,7 @@
 const CommonBtn = ({ text }) => {
   return (
     <div>
-      <button className="py-[13px] px-[45px] border font-medium text-primary border-primary rounded-[50px] hover:bg-primary hover:text-white duration-300">
+      <button className="py-[13px] px-[45px] border font-medium text-primary border-primary rounded-[50px] hover:bg-primary hover:shadow-3xl hover:shadow-primary hover:text-white duration-300">
         {text}
       </button>
     </div>
